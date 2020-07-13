@@ -1,12 +1,12 @@
 body{
-    background-color: green;
+    background-color: teal;
 }
 .container{
     width: 414px;
     height: 219px;
     margin: auto;
     margin-top: 200px;
-    border: 2px black solid;
+    /*border: 2px black solid;*/
 }
 .white-keys kbd{
     display: inline-block;
@@ -15,6 +15,10 @@ body{
     margin: 0 -2px;
     background-color: white;
     color: black;
+    border-radius: 7px;
+}
+.white-keys .active{
+    background-color: #DDD;
 }
 .black-keys kbd{
     display: inline-block;
@@ -27,8 +31,12 @@ body{
     z-index: 2;
     background-color: black;
     color: white;
+    border-radius: 7px;
 }
 .black-keys .shift{
     position: relative;
     left: 90px;
+}
+.black-keys .active{
+    background-color: #222;
 }

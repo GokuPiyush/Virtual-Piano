@@ -1,40 +1,34 @@
+//KeyPress
 document.addEventListener("keydown", function(event) {
-    let audio;
-    if(event.code == "KeyA"){
-        audio = new Audio("media/A.mp3");
+    const st = "ASDFGHJWETYU";
+    let code = String(event.code).slice(3, 4);
+    if(st.match(code)){
+        console.log(code + " is pressed.");
+        let path = "media/"+code+".mp3";
+        let audio = new Audio(path);
         audio.play();
-    }else if(event.code == "KeyS"){
-        audio = new Audio("media/S.mp3");
-        audio.play();
-    }else if(event.code == "KeyD") {
-        audio = new Audio("media/D.mp3");
-        audio.play();
-    }else if(event.code == "KeyF"){
-        audio = new Audio("media/F.mp3");
-        audio.play();
-    }else if(event.code == "KeyG"){
-        audio = new Audio("media/G.mp3");
-        audio.play();
-    }else if(event.code == "KeyH"){
-        audio = new Audio("media/H.mp3");
-        audio.play();
-    }else if(event.code == "KeyJ"){
-        audio = new Audio("media/J.mp3");
-        audio.play();
-    }else if(event.code == "KeyW"){
-        audio = new Audio("media/W.mp3");
-        audio.play();
-    }else if(event.code == "KeyE"){
-        audio = new Audio("media/E.mp3");
-        audio.play();
-    }else if(event.code == "KeyT"){
-        audio = new Audio("media/T.mp3");
-        audio.play();
-    }else if(event.code == "KeyY"){
-        audio = new Audio("media/Y.mp3");
-        audio.play();
-    }else if(event.code == "KeyU"){
-        audio = new Audio("media/U.mp3");
-        audio.play();
+        let selector = "."+code;
+        document.querySelector(selector).classList.add('active');
+        document.addEventListener('keyup', e => {
+            document.querySelector(selector).classList.remove('active');
+        });
+    }else{
+        console.log("Press a valid Key!");
     }
+});
+
+//Click
+const keys = document.querySelectorAll('.A, .S, .D, .F, .G, .H, .J, .W, .E, .T, .Y, .U ');
+keys.forEach(key => {
+    key.addEventListener('mousedown', e => {
+        console.log(key.textContent + " is clicked.");
+        let path = "media/"+key.textContent+".mp3";
+        const audio = new Audio(path);
+        audio.play();
+        let selector = "."+key.textContent;
+        document.querySelector(selector).classList.add('active');
+        document.addEventListener('mouseup', e => {
+            document.querySelector(selector).classList.remove('active');
+        });
+    })
 });
